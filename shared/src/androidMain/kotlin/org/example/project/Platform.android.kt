@@ -1,10 +1,12 @@
 package org.example.project
 
 import android.content.res.Resources
+import android.graphics.ColorSpace.Model
 import android.os.Build
+import android.util.Log
 import kotlin.math.round
 
-actual class Platform() {
+actual class Platform actual constructor() {
     actual val name: String
         get() = "Android"
     actual val osVersion: String
@@ -15,8 +17,9 @@ actual class Platform() {
         get() = round(Resources.getSystem().displayMetrics.density).toInt()
 
     actual fun logSystemInfo() {
-        println("OS Version: $osVersion")
-        println("Device Model: $deviceModel")
-        println("Density: $density")
+        Log.d(
+            "Vista",
+            "OS Version: $osVersion, Device Model: $deviceModel, Density: $density"
+        )
     }
 }
